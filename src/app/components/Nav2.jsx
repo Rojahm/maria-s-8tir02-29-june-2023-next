@@ -1,13 +1,17 @@
+import Link from "next/link";
+
 const Nav2 = () => {
   return (
-    <div>
-      <div className="navbar">
-        <ul>
-          <li className="nav-item">searchIcon</li>
-          <li className="nav-item">LOG IN</li>
-          <li className="nav-item">CART (0)</li>
-        </ul>
-      </div>
+    <div className="navbar">
+      <Link href="/search" className="nav-item">
+        SEARCH
+      </Link>
+      <Link href="/login" className="nav-item">
+        LOGIN
+      </Link>
+      <Link href="/cart" className="nav-item">
+        CART
+      </Link>
     </div>
   );
 };
