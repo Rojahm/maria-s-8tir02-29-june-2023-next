@@ -11,9 +11,9 @@ const Header = () => {
       <div className="logo">
         <Link href="/">
           <Image
-            src="/img/hq-logo-color.png"
-            width={120}
-            height={120}
+            src="/img/logo-color-high-thick.png"
+            width={150}
+            height={50}
             alt="color logo maria cosmetics"
           />
         </Link>
