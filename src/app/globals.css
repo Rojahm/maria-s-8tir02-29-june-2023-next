@@ -1,4 +1,25 @@
+:root {
+  --main-text-color: #1d1c1c;
+
+  --placeholder-color: #88aca2;
+
+  --title-text-color: #2f4c51;
+  --title-text-color-secondary: #cd9f45;
+  --title-text-color-disabled: #cfcfcf;
+
+  --bg-front: #fff;
+  --bg-up: #eeeef0;
+  --bg-down: #f3f9f8;
+
+  --bg-card-primary: #e7f2ee;
+  --bg-card-secondary: #fbf4e2;
+
+  --border-color-light: #b4b7b7;
+  --border-color-dark: #474b4b;
+}
 body {
+  color: var(--main-text-color);
+  background-color: var(--bg-down);
   width: 99vw;
   /* display: flex;
   flex-direction: column;
@@ -20,11 +41,49 @@ body {
 }
 .nav-item {
   text-decoration: none;
+  color: var(--title-text-color);
+  font-weight: 500;
 }
 .logo {
   width: 40vw;
   display: flex;
   justify-content: center;
+}
+/* Hero Style */
+.Hero {
+  display: flex;
+  height: 90vh;
+  width: 90vw;
+  align-items: center;
+  justify-content: space-around;
+}
+.title-secondary {
+  color: var(--placeholder-color);
+  font-weight: 400;
+}
+.title-primary {
+  color: var(--main-text-color);
+  font-weight: 400;
+  font-size: 3rem;
+}
+.hero-paragraph {
+}
+.hero-btn {
+  color: var(--bg-up);
+  background-color: var(--border-color-dark);
+  border: 1px solid var(--border-color-dark);
+  border-radius: 4px;
+  padding: 12px 35px;
+  transition: all 200ms ease-in-out;
+}
+.hero-btn:hover {
+  cursor: pointer;
+  color: var(--border-color-dark);
+  background-color: var(--bg-up);
+  border: 1px solid var(--border-color-dark);
+}
+.hero-right {
+  display: flex;
 }
 /* Main css */
 .container {
@@ -40,24 +99,7 @@ body {
   justify-content: space-evenly;
   align-items: center;
 }
-/* :root {
-  --main-text-color: #1d1c1c;
-
-  --placeholder-color: #88aca2;
-
-  --title-text-color: #2f4c51;
-  --title-text-color-secondary: #cd9f45;
-  --title-text-color-disabled: #cfcfcf;
-
-  --bg-up: #ffffff;
-  --bg-down: #d2d2d2;
-
-  --bg-card-primary: #e7f2ee;
-  --bg-card-secondary: #fbf4e2;
-
-  --border-color-light: #b4b7b7;
-  --border-color-dark: #474b4b;
-}
+/* 
 .Header {
   display: flex;
   justify-content: space-around;
