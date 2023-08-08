@@ -7,7 +7,6 @@ const Header = () => {
   return (
     <div className="Header">
       <Nav />
-
       <div className="logo">
         <Link href="/">
           <Image
