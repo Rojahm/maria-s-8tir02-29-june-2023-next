@@ -1,7 +1,10 @@
 import "./globals.css";
+import "bootstrap/dist/css/bootstrap.css";
+
 import { Inter } from "next/font/google";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Credit from "./components/Credit";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +21,7 @@ export default function RootLayout({ children }) {
         <hr />
         <div className="container">{children}</div>
         <Footer />
+        <Credit />
       </body>
     </html>
   );
