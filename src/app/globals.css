@@ -19,8 +19,8 @@
 }
 body {
   color: var(--main-text-color);
-  background-color: var(--bg-down);
-  width: 98vw;
+  background-color: var(--bg-down) !important;
+  width: 99vw;
   /* display: flex;
   flex-direction: column;
   height: auto;
@@ -28,10 +28,11 @@ body {
 }
 /* Header css */
 .Header {
-  margin-top: 0.5rem;
+  margin-top: 0.8rem;
   align-items: center;
   display: flex;
   justify-content: space-evenly;
+  height: 5vh;
 }
 .navbar {
   width: 20vw;
@@ -96,12 +97,90 @@ body {
 }
 /* Footer css */
 .Footer {
+  margin-top: 3rem;
+  background-color: var(--bg-up);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  padding: 2rem 3rem;
+  border-radius: 14px 14px 0px 0px;
+}
+.Footer .info {
+  background-color: var(--bg-front);
+  border-radius: 4px;
+  padding: 2rem 3rem;
+  opacity: 0.8;
+  color: var(--main-text-color);
+}
+.Footer .footer-col {
+  padding: 2rem 3rem;
+  background-color: var(--bg-front);
+  border-radius: 4px;
+  opacity: 0.68;
+}
+.Footer .footer-title {
+  color: var(--title-text-color);
+  opacity: unset;
+}
+.Footer .footet-content {
+  color: var(--main-text-color);
+}
+/* Credit styles */
+.Credit {
+  align-self: center;
+  width: 98vw;
+  text-align: center;
+}
+.Credit .content {
+  margin: 0;
+  color: var(--title-text-color-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 3rem;
+}
+/* Products page style */
+.ProductsPage {
+  text-align: center;
+}
+.ProductsPage .container {
+  margin-top: 5vh;
+}
+.ProductsPage .card-header {
+  background-color: unset;
+}
+/* Product page style */
+.ProductPage .product {
+  padding: 5px;
+}
+.ProductPage .card-body {
+  padding: 4rem 5rem;
+}
+/* Product Detail page style */
+
+/* Loader  */
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: blue;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 /* 
+
 .Header {
   display: flex;
   justify-content: space-around;
