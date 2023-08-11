@@ -179,6 +179,13 @@ body {
     transform: rotate(360deg);
   }
 }
+/* Cart styles */
+.CartPage .cart {
+  position: fixed;
+  right: 5rem;
+  z-index: 3;
+  width: 35vw;
+}
 /* 
 
 .Header {
