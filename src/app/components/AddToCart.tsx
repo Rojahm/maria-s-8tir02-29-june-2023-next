@@ -1,38 +1,34 @@
 "use client";
 import React, { FC } from "react";
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
+import { addToCart, removeFromCart } from "@/redux/reducers/cart/cartSlice";
 import type { ProductProps } from "./Product";
-// import type { RootState } from "@/redux/store";
-// import { useSelector, useDispatch } from "react-redux";
-import {
-  addToCart,
-  removeFromCart,
-  showCart,
-} from "@/redux/reducers/cart/cartSlice";
+import { FaCartPlus } from "react-icons/fa";
 
 const AddToCart: FC<ProductProps> = (product) => {
   const item = useAppSelector((state) =>
     state.cart.itemsList.find((item) => item.id === product.id)
   );
   const dispatch = useAppDispatch();
+  console.log(item);
 
   return (
     <div>
       <h6>add to cart</h6>
       <span>
+        <button className="btn">{item?.quantity}</button>
         <button
           className="btn btn-dark"
           onClick={() => dispatch(addToCart(product))}
         >
-          +
+          <FaCartPlus />
         </button>
-        <button className="btn">{item?.quantity}</button>
-        <button
+        {/* <button
           className="btn btn-dark"
           onClick={() => dispatch(removeFromCart(product))}
         >
           -
-        </button>
+        </button> */}
       </span>
     </div>
   );
