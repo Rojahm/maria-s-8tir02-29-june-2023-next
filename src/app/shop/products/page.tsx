@@ -4,7 +4,7 @@ import { FaEye } from "react-icons/fa";
 
 async function apiCall() {
   const response = await fetch(
-    "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline",
+    "https://makeup-api.herokuapp.com/api/v1/products.json?brand=dior",
     {
       next: { revalidate: 60 },
     }
@@ -15,7 +15,6 @@ async function apiCall() {
 }
 const ProductsPage = async () => {
   const products = await apiCall();
-  console.log(products);
   return (
     <div className="ProductsPage">
       <h1>SHOP</h1>
