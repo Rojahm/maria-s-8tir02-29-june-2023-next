@@ -1,3 +1,4 @@
+import { Url } from "next/dist/shared/lib/router/router";
 import Image from "next/image";
 
 async function fetchProduct(id: number) {
@@ -13,6 +14,7 @@ export type ProductProps = {
   id: number;
   price: number;
   quantity: number;
+  api_featured_image: Url;
 };
 const Product = async ({ id }: ProductProps) => {
   const product = await fetchProduct(id);
