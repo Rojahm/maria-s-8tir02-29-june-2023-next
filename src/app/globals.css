@@ -157,6 +157,14 @@ body {
   padding: 4rem 5rem;
 }
 /* Product Detail page style */
+.ProductDetail .swatch {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  border-radius: 50px;
+  margin: 0px 15px;
+  margin-bottom: 3rem;
+}
 
 /* Loader  */
 .loader {
