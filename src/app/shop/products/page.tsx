@@ -2,8 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaEye } from "react-icons/fa";
 
-import type { ProductProps } from "@/app/components/Product";
-
 async function apiCall() {
   const response = await fetch(
     "https://makeup-api.herokuapp.com/api/v1/products.json?brand=dior",
@@ -27,7 +25,7 @@ const ProductsPage = async () => {
       </ul> */}
       <div className="container">
         <div className="row row-cols-4">
-          {products.map((product: ProductProps) => (
+          {products.map((product) => (
             <div className="col" key={product.id}>
               <div
                 className="card border-dark mb-3"
