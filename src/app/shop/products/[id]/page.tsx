@@ -10,13 +10,25 @@ const ProductPage = ({ params: { id } }: any) => {
         <div className="row g-0">
           <div className="col-md-4 product">
             <Suspense fallback={<LoadingPage />}>
-              <Product id={id} />
+              <Product
+                id={id}
+                name={""}
+                price={0}
+                quantity={0}
+                api_featured_image={""}
+              />
             </Suspense>
           </div>
           <div className="col-md-8">
             <div className="card-body">
               <Suspense fallback={<div>Loading...</div>}>
-                <ProductDetail id={id} />
+                <ProductDetail
+                  id={id}
+                  name={""}
+                  price={0}
+                  quantity={0}
+                  api_featured_image={""}
+                />
               </Suspense>
             </div>
           </div>

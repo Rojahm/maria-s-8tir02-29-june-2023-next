@@ -48,6 +48,7 @@ const ProductDetail = async ({ id }: ProductProps) => {
         id={product.id}
         price={product.price}
         quantity={product.quantity}
+        api_featured_image={""}
       />
     </div>
   );
