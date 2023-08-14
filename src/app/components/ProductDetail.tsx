@@ -16,7 +16,6 @@ interface ColorObj {
 export interface product {
   product: ProductProps;
 }
-
 const ProductDetail = async ({ id }: ProductProps) => {
   const product = await fetchProduct(id);
   return (
@@ -43,7 +42,7 @@ const ProductDetail = async ({ id }: ProductProps) => {
         id={parseInt(product.id)}
         price={parseInt(product.price)}
         quantity={parseInt(product.quantity)}
-        api_featured_image={""}
+        api_featured_image={product.api_featured_image}
       />
     </div>
   );
