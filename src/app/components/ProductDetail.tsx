@@ -40,9 +40,9 @@ const ProductDetail = async ({ id }: ProductProps) => {
 
       <AddToCart
         name={product.name}
-        id={product.id}
-        price={product.price}
-        quantity={product.quantity}
+        id={parseInt(product.id)}
+        price={parseInt(product.price)}
+        quantity={parseInt(product.quantity)}
         api_featured_image={""}
       />
     </div>

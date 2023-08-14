@@ -14,7 +14,6 @@ const CartPage = () => {
   const show = useAppSelector((state) => state.cart.showCart);
   const cartList = useAppSelector((state) => state.cart.itemsList);
   const dispatch = useAppDispatch();
-  console.log(cartList);
   return (
     <div className="CartPage">
       <Toast className="cart" show={show} onClose={() => dispatch(showCart())}>
