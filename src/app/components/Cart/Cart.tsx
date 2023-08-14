@@ -2,6 +2,7 @@
 
 import React from "react";
 import Toast from "react-bootstrap/Toast";
+import Image from "next/image";
 
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
 import {
@@ -9,11 +10,13 @@ import {
   removeFromCart,
   showCart,
 } from "@/redux/reducers/cart/cartSlice";
+import Link from "next/link";
 
 const CartPage = () => {
   const show = useAppSelector((state) => state.cart.showCart);
   const cartList = useAppSelector((state) => state.cart.itemsList);
   const dispatch = useAppDispatch();
+
   return (
     <div className="CartPage">
       <Toast className="cart" show={show} onClose={() => dispatch(showCart())}>
@@ -23,11 +26,19 @@ const CartPage = () => {
         <Toast.Body>
           <div className="cart-items">
             {cartList.map((item) => (
-              <div className="cart-item" key={item.id}>
-                <span className="border">{item.name}</span>
-                <span className="border">{item.quantity}</span>
-                <span className="border">{item.price}</span>
-              </div>
+              <Link href={`/shop/products/${item.id}`} key={item.id}>
+                <div className="cart-item">
+                  <Image
+                    src={`https:${item.api_featured_image}`}
+                    alt={item.name}
+                    width={50}
+                    height={50}
+                  />
+                  <span className="border">{item.name}</span>
+                  <span className="border">{item.quantity}</span>
+                  <span className="border">{item.price}</span>
+                </div>
+              </Link>
             ))}
           </div>
           <hr />
