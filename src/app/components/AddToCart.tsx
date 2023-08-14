@@ -2,10 +2,10 @@
 import React, { FC } from "react";
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
 import { addToCart, removeFromCart } from "@/redux/reducers/cart/cartSlice";
-import type { ProductProps } from "./Product";
+import type { Product } from "@/redux/reducers/cart/cartSlice";
 import { FaCartPlus } from "react-icons/fa";
 
-const AddToCart: FC<ProductProps> = (product) => {
+const AddToCart: FC<Product> = (product) => {
   const item = useAppSelector((state) =>
     state.cart.itemsList.find((item) => item.id === product.id)
   );
