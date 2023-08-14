@@ -27,11 +27,12 @@ export interface ProductDetail {
     }
   ];
 }
-interface Product {
+export interface Product {
   name: string;
   id: number;
   price: number;
   quantity: number;
+  api_featured_image: string;
 }
 interface cartState {
   itemsList: Product[];
@@ -65,6 +66,7 @@ export const cartSlice = createSlice({
             id: newItem.id,
             quantity: 1,
             price: newItem.price,
+            api_featured_image: newItem.api_featured_image,
           },
         ];
       }
