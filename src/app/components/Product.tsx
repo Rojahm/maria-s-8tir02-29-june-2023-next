@@ -2,7 +2,7 @@ import { Url } from "next/dist/shared/lib/router/router";
 import Image from "next/image";
 
 async function fetchProduct(id: number) {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
   const response = await fetch(
     `https://makeup-api.herokuapp.com/api/v1/products/${id}.json`
   );
