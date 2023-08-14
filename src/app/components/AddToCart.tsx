@@ -10,7 +10,6 @@ const AddToCart: FC<ProductProps> = (product) => {
     state.cart.itemsList.find((item) => item.id === product.id)
   );
   const dispatch = useAppDispatch();
-  console.log(item);
 
   return (
     <div>
