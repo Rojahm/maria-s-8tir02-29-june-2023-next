@@ -194,6 +194,14 @@ body {
   z-index: 3;
   width: 35vw;
 }
+.ProductDetail .swatch {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  border-radius: 50px;
+  margin: 0px 15px;
+  margin-bottom: 3rem;
+}
 /* 
 
 .Header {

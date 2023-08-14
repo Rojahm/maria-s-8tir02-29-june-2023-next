@@ -20,20 +20,15 @@ export interface product {
 const ProductDetail = async ({ id }: ProductProps) => {
   const product = await fetchProduct(id);
   return (
-    <div>
+    <div className="ProductDetail">
       <h2>{product.name}</h2>
       <p>{product.description}</p>
       <div>
         {product.product_colors.map((color: ColorObj) => (
           <button
+            className="swatch"
             key={color.color_name}
             style={{
-              width: "20px",
-              height: "20px",
-              border: "0",
-              borderRadius: "50px",
-              margin: "0px 15px",
-              marginBottom: "3rem",
               backgroundColor: `${color.hex_value}`,
             }}
           ></button>
