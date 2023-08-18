@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import LoadingPage from "@/app/loading";
-import Product from "@/app/components/Product";
 import ProductDetail from "@/app/components/ProductDetail";
+import Product from "@/app/components/Product";
 
 const ProductPage = ({ params: { id } }: any) => {
   return (
@@ -10,25 +10,13 @@ const ProductPage = ({ params: { id } }: any) => {
         <div className="row g-0">
           <div className="col-md-4 product">
             <Suspense fallback={<LoadingPage />}>
-              <Product
-                id={id}
-                name={""}
-                price={0}
-                quantity={0}
-                api_featured_image={""}
-              />
+              <Product id={id} />
             </Suspense>
           </div>
           <div className="col-md-8">
             <div className="card-body">
               <Suspense fallback={<div>Loading...</div>}>
-                <ProductDetail
-                  id={id}
-                  name={""}
-                  price={0}
-                  quantity={0}
-                  api_featured_image={""}
-                />
+                <ProductDetail id={id} />
               </Suspense>
             </div>
           </div>
