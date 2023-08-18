@@ -202,6 +202,28 @@ body {
   margin: 0px 15px;
   margin-bottom: 3rem;
 }
+.CartItemCard {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.CartItemCard .cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  border-bottom: 1px solid var(--border-color-light);
+  margin-bottom: 3px;
+}
+.CartItemCard .link {
+  text-decoration: none;
+  color: var(--main-text-color);
+  font-weight: 600;
+}
+.cartPage {
+  width: 70vw;
+}
+
 /* 
 
 .Header {
