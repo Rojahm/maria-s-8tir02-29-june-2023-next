@@ -1,20 +1,15 @@
 "use client";
-
 import React from "react";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { totalPriceSelector, showCart } from "@/redux/reducers/cart/cartSlice";
+import CartItemCard from "./CardItemCard";
 import Toast from "react-bootstrap/Toast";
-import Image from "next/image";
-
-import { useAppSelector, useAppDispatch } from "@/redux/hooks";
-import {
-  addToCart,
-  removeFromCart,
-  showCart,
-} from "@/redux/reducers/cart/cartSlice";
 import Link from "next/link";
 
 const CartPage = () => {
+  const cartItems = useAppSelector((state) => state.cart.cartItems);
   const show = useAppSelector((state) => state.cart.showCart);
-  const cartList = useAppSelector((state) => state.cart.itemsList);
+  const totalPrice = useAppSelector(totalPriceSelector);
   const dispatch = useAppDispatch();
 
   return (
@@ -24,27 +19,19 @@ const CartPage = () => {
           <strong className="me-auto">Cart</strong>
         </Toast.Header>
         <Toast.Body>
-          <div className="cart-items">
-            {cartList.map((item) => (
-              <Link href={`/shop/products/${item.id}`} key={item.id}>
-                <div className="cart-item">
-                  <Image
-                    src={`https:${item.api_featured_image}`}
-                    alt={item.name}
-                    width={50}
-                    height={50}
-                  />
-                  <span className="border">{item.name}</span>
-                  <span className="border">{item.quantity}</span>
-                  <span className="border">{item.price}</span>
-                </div>
-              </Link>
-            ))}
-          </div>
+          {cartItems.map((cartItem) => (
+            <CartItemCard cartItem={cartItem} key={cartItem.product.id} />
+          ))}
+          <p className="text-slate-600">
+            Total Price:{" "}
+            <span className="text-slate-900 font-bold">{totalPrice} $</span>
+          </p>
           <hr />
-          <button type="button" className="btn btn-sm">
-            order
-          </button>
+          <Link href={"/cart"}>
+            <button type="button" className="btn btn-sm">
+              order
+            </button>
+          </Link>
           <button
             type="button"
             className="btn btn-secondary btn-sm"
