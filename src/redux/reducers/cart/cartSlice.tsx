@@ -1,109 +1,82 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "@/redux/store";
+import { CartItem, Product } from "@/interfaces";
 
-export interface ProductDetail {
-  id: number;
-  brand: string;
-  name: string;
-  price: number;
-  price_sign: string;
-  currency: string;
-  image_link: URL;
-  product_link: URL;
-  website_link: URL;
-  description: string;
-  rating: number;
-  category: string;
-  product_type: string;
-  tag_list: [];
-  created_at: Date;
-  updated_at: Date;
-  product_api_url: URL;
-  api_featured_image: URL;
-  product_colors: [
-    {
-      hex_value: `#${string}`;
-      colour_name: string;
-    }
-  ];
-}
-export interface Product {
-  name: string;
-  id: number;
-  price: number;
-  quantity: number;
-  api_featured_image: string;
-}
-interface cartState {
-  itemsList: Product[];
-  totalQuantity: number;
+export interface CartState {
+  cartItems: CartItem[];
+  cartPrice: number;
+  cartQty: number;
   showCart: boolean;
-  totalCartValue: number;
 }
-const initialState: cartState = {
-  itemsList: [],
-  totalQuantity: 0,
+const initialState: CartState = {
+  cartItems: [],
+  cartPrice: 0,
+  cartQty: 0,
   showCart: false,
-  totalCartValue: 0,
 };
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<Product>) => {
-      const newItem = action.payload;
-      const existingItem = state.itemsList.find(
-        (item) => item.id === newItem.id
+      const item = state.cartItems.find(
+        (item) => item.product.id === action.payload.id
       );
-      if (existingItem) {
-        existingItem.quantity += 1;
-        existingItem.price += newItem.price;
+      if (item) {
+        item.qty++;
+        item.price += item.price;
       } else {
-        state.itemsList = [
-          ...state.itemsList,
-          {
-            name: newItem.name,
-            id: newItem.id,
-            quantity: 1,
-            price: newItem.price,
-            api_featured_image: newItem.api_featured_image,
-          },
-        ];
+        state.cartItems.push({
+          product: action.payload,
+          qty: 1,
+          price: action.payload.price,
+        });
       }
-      state.totalCartValue += newItem.price;
-      state.totalQuantity += 1;
     },
     removeFromCart: (state, action: PayloadAction<Product>) => {
-      const remove = action.payload;
-      const existingItem = state.itemsList.find(
-        (item) => item.id === remove.id
+      const item = state.cartItems.find(
+        (item) => item.product.id === action.payload.id
       );
-      if (existingItem) {
-        if (existingItem.quantity > 1) {
-          existingItem.quantity -= 1;
-          existingItem.price -= remove.price;
-          state.totalQuantity -= 1;
-          state.totalCartValue -= remove.price;
+      if (item) {
+        item.qty--;
+        if (item.qty === 0) {
+          state.cartItems.filter(
+            (cartItem) => cartItem.product.id !== action.payload.id
+          );
         }
-      } else {
-        state.itemsList = state.itemsList.filter(
-          (item) => item.id !== remove.id
-        );
-        state.totalQuantity -= 1;
-        state.totalCartValue -= remove.price;
       }
     },
     showCart: (state) => {
-      state.showCart ? (state.showCart = false) : (state.showCart = true);
+      state.showCart = !state.showCart;
     },
   },
 });
 
-export const { addToCart, removeFromCart, showCart } = cartSlice.actions;
-export const selectCart = (state: RootState) => {
-  state.cart.itemsList;
-  state.cart.totalQuantity;
+export const selectCount = (state: RootState) => {
+  state.cart.cartItems;
+  state.cart.cartPrice;
+  state.cart.cartQty;
   state.cart.showCart;
-  state.cart.totalCartValue;
 };
+
+const cartItems = (state: RootState) => state.cart.cartItems;
+
+export const productQtyInCartSelector = createSelector(
+  [cartItems, (_cartItems, productId: number) => productId],
+  (cartItems, productId) =>
+    cartItems.find((el) => el.product.id === productId)?.qty
+);
+
+export const totalCartItemsSelector = createSelector([cartItems], (cartItems) =>
+  cartItems.reduce((total: number, curr: CartItem) => (total += curr.qty), 0)
+);
+export const totalPriceSelector = createSelector([cartItems], (cartItems) =>
+  cartItems.reduce(
+    (total: number, curr: CartItem) => (total += curr.qty * curr.product.price),
+    0
+  )
+);
+
+export const { addToCart, removeFromCart, showCart } = cartSlice.actions;
 export default cartSlice.reducer;
