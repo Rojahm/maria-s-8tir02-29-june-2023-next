@@ -1,4 +1,3 @@
-import { Url } from "next/dist/shared/lib/router/router";
 import Image from "next/image";
 
 async function fetchProduct(id: number) {
@@ -9,16 +8,11 @@ async function fetchProduct(id: number) {
   const product = response.json();
   return product;
 }
-export type ProductProps = {
-  name: string;
+interface Props {
   id: number;
-  price: number;
-  quantity: number;
-  api_featured_image: Url;
-};
-const Product = async ({ id }: ProductProps) => {
+}
+const Product = async ({ id }: Props) => {
   const product = await fetchProduct(id);
-  console.log(product);
   return (
     <>
       <div>
