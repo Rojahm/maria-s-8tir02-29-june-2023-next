@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FaEye } from "react-icons/fa";
-
-import type { ProductProps } from "@/app/components/Product";
+import type { ProductDetail } from "@/interfaces";
 
 async function apiCall() {
   const response = await fetch(
@@ -11,7 +10,7 @@ async function apiCall() {
       next: { revalidate: 60 },
     }
   );
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
   const products = await response.json();
   return products;
 }
@@ -27,7 +26,7 @@ const ProductsPage = async () => {
       </ul> */}
       <div className="container">
         <div className="row row-cols-4">
-          {products.map((product: ProductProps) => (
+          {products.map((product: ProductDetail) => (
             <div className="col" key={product.id}>
               <div
                 className="card border-dark mb-3"
@@ -36,7 +35,7 @@ const ProductsPage = async () => {
                 <div className="card-header">
                   <Image
                     src={`https:${product.api_featured_image}`}
-                    alt="beauty product"
+                    alt={product.name}
                     width={200}
                     height={200}
                     quality={100} // {number 1-100}
