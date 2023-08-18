@@ -1,5 +1,5 @@
-import AddToCart from "./AddToCart";
-import type { ProductProps } from "./Product";
+import AddToCartBtn from "./Cart/AddToCartBtn";
+import type { Product } from "@/interfaces";
 
 async function fetchProduct(id: number) {
   const response = await fetch(
@@ -13,10 +13,11 @@ interface ColorObj {
   color_name: string;
   hex_value: string;
 }
-export interface product {
-  product: ProductProps;
+interface Props {
+  id: number;
+  product: Product;
 }
-const ProductDetail = async ({ id }: ProductProps) => {
+const ProductDetail = async ({ id }: Props) => {
   const product = await fetchProduct(id);
   return (
     <div className="ProductDetail">
@@ -37,13 +38,7 @@ const ProductDetail = async ({ id }: ProductProps) => {
         <span>{product.price}$</span>
       </div>
 
-      <AddToCart
-        name={product.name}
-        id={parseInt(product.id)}
-        price={parseInt(product.price)}
-        quantity={parseInt(product.quantity)}
-        api_featured_image={product.api_featured_image}
-      />
+      <AddToCartBtn product={product} />
     </div>
   );
 };
