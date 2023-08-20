@@ -7,7 +7,7 @@ const Nav2 = () => {
       <Link href="/search" className="nav-item">
         SEARCH
       </Link>
-      <Link href="/login" className="nav-item">
+      <Link href="/auth/login" className="nav-item">
         LOGIN
       </Link>
 
