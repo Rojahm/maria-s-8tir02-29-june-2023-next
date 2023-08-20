@@ -21,9 +21,11 @@ function CartItemCard({ cartItem }: Props) {
               src={`https://${cartItem.product.api_featured_image}`}
               alt={cartItem.product.name}
               width={50}
-              height={50}
+              height={70}
             />
-            <p className="name">{cartItem.product.name}</p>
+            <p className="name">
+              {`${cartItem.product.name}`.trim().toUpperCase().substring(0, 11)}
+            </p>
             <p className="qty">
               {" "}
               <QtyBtn product={cartItem.product} />
