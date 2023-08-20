@@ -3,7 +3,13 @@ import LoadingPage from "@/app/loading";
 import ProductDetail from "@/app/components/product/ProductDetail";
 import Product from "@/app/components/product/Product";
 
-const ProductPage = ({ params: { id } }: any) => {
+const ProductPage = ({
+  params: { id },
+}: {
+  params: {
+    id: number;
+  };
+}) => {
   return (
     <div className="ProductPage container">
       <div className="card mb-3 shadow" style={{ maxWidth: "90vw" }}>
