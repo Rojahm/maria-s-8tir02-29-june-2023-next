@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import LoadingPage from "@/app/loading";
-import ProductDetail from "@/app/components/ProductDetail";
-import Product from "@/app/components/Product";
+import ProductDetail from "@/app/components/product/ProductDetail";
+import Product from "@/app/components/product/Product";
 
 const ProductPage = ({ params: { id } }: any) => {
   return (
