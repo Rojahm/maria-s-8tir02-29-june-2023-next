@@ -1,4 +1,4 @@
-import AddToCartBtn from "./Cart/AddToCartBtn";
+import AddToCartBtn from "../Cart/AddToCartBtn";
 import type { Product } from "@/interfaces";
 
 async function fetchProduct(id: number) {
@@ -15,7 +15,6 @@ interface ColorObj {
 }
 interface Props {
   id: number;
-  product: Product;
 }
 const ProductDetail = async ({ id }: Props) => {
   const product = await fetchProduct(id);
